@@ -1,13 +1,21 @@
 import React from 'react';
 import './App.css';
 
+import { Authenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Aquaculture Management V2</h1>
-      </header>
-    </div>
+    <Authenticator>
+      {({ signOut, user }) => (
+        <div className="App">
+          <p>
+            Hey {user.username}, Welcome to Aquaculture Management, with auth!
+          </p>
+          <button onClick={signOut}>Sign out</button>
+        </div>
+      )}
+    </Authenticator>
   );
 }
 
