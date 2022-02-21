@@ -1,0 +1,14 @@
+{
+  "resourceName": "contentstorage",
+  "policyUUID": "e01c8ed0",
+  "bucketName": "aquaerp2684da8a11fa4adcbef6c0c274243c0d",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
