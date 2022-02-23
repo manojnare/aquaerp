@@ -13,6 +13,17 @@
   }
 }
 
+.apph1 {
+  color: white;
+  background-image: url(./prawns.jpg);
+  text-shadow: 2px 2px grey;
+  text-align: center;
+}
+
+:root{
+  --form-color: cyan
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

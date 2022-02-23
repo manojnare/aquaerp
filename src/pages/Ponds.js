@@ -13,7 +13,7 @@ Amplify.configure(awsExports);
 
 const initialFormState = { name: '', description: '', capacity: '' }
 
-function Ponds({ signOut, user }) {
+function Ponds() {
 
   const [ponds, setPonds] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
@@ -98,7 +98,6 @@ function Ponds({ signOut, user }) {
           ))
         }
       </div>
-      <button onClick={signOut}>Sign out</button>
     </div>
   );
 }
