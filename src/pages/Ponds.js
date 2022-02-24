@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { listPonds } from '../graphql/queries';
-import { createPonds as createPondsMutation, deletePonds as deletePondsMutation } from '../graphql/mutations';
+import { createPonds as createPondsMutation, deletePonds as deletePondsMutation} 
+  from '../graphql/mutations';
 
 import { Amplify } from 'aws-amplify';
 import { API, Storage } from 'aws-amplify';
@@ -11,7 +12,7 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from '../aws-exports';
 Amplify.configure(awsExports);
 
-const initialFormState = { name: '', description: '', capacity: '' }
+const initialFormState = { pond_area: '', pond_no: 0, pond_name: '', capacity: '' }
 
 function Ponds() {
 
@@ -36,7 +37,7 @@ function Ponds() {
   }
 
   async function createPonds() {
-    if (!formData.name || !formData.description) return;
+    if (!formData.pond_area || !formData.pond_no || !formData.pond_name|| !formData.capacity) return;
     await API.graphql({ query: createPondsMutation, variables: { input: formData } });
     if (formData.image) {
       const image = await Storage.get(formData.image);
@@ -62,39 +63,83 @@ function Ponds() {
 
   return (
     <div className="App">
-      <h1>My Ponds App</h1>
-      <input
-        onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-        placeholder="Ponds name"
-        value={formData.name}
-      />
-      <input
-        onChange={e => setFormData({ ...formData, 'description': e.target.value})}
-        placeholder="Ponds description"
-        value={formData.description}
-      />
-      <input
-        onChange={e => setFormData({ ...formData, 'capacity': e.target.value})}
-        placeholder="Ponds Capacity"
-        value={formData.capacity}
-      />
-      <input
-        type="file"
-        onChange={onChange}
-      />
-      <button onClick={createPonds}>Create Ponds</button>
+      <h1>Ponds Details</h1>
+      <table className="table table-striped">
+      <tbody>
+        <tr>
+        <td>
+            <input
+              onChange={e => setFormData({ ...formData, 'pond_area': e.target.value})}
+              placeholder="Ponds Area"
+              value={formData.pond_area}
+            />
+          </td>          
+          <td>
+            <input
+              onChange={e => setFormData({ ...formData, 'pond_no': e.target.value})}
+              placeholder="Ponds No"
+              value={formData.no}
+            />
+          </td>
+          <td>
+            <input
+              onChange={e => setFormData({ ...formData, 'pond_name': e.target.value})}
+              placeholder="Pond Name"
+              value={formData.pond_name}
+            />
+          </td>
+          <td>
+            <input
+              onChange={e => setFormData({ ...formData, 'capacity': e.target.value})}
+              placeholder="Ponds Capacity"
+              value={formData.capacity}
+            />
+          </td>
+          <td>      
+            <input
+              type="file"
+              onChange={onChange}
+            />
+          </td>
+          <td><button onClick={createPonds}>Create Pond</button></td>      
+        </tr>
+
+      </tbody>
+    </table>
+
+      <table className="table table-striped">
+                  <thead>
+            <tr>
+              <th width="15%">Ponds Area</th>
+              <th width="10%">Ponds No</th>
+              <th width="15%">Ponds Name</th>
+              <th width="10%">Ponds Capacity</th>
+              <th width="40%">Ponds Image</th>
+              <th width="10%">Action</th>
+            </tr>
+          </thead>
+      </table>
+
       <div style={{marginBottom: 30}}>
-        {
-          ponds.map(ponds => (
-            <div key={ponds.id || ponds.name}>
-              <h2>{ponds.name}</h2>
-              <p>{ponds.description}</p>
-              <p>{ponds.capacity}</p>
-              <button onClick={() => deletePonds(ponds)}>Delete Pond</button>
               {
-                ponds.image && <img src={ponds.image} style={{width: 400}} alt="Pond"/>
-              }   
-            </div>
+                ponds.map(ponds => (
+                  <div key={ponds.id}>
+                  <table className="table table-striped">
+                  <tbody>
+                    <tr>
+                      <td width="15%">{ponds.pond_area}</td>
+                      <td width="10%">{ponds.pond_no}</td>
+                      <td width="15%">{ponds.pond_name}</td>
+                      <td width="10%">{ponds.capacity}</td>
+                      <td width="40%">{ponds.image 
+                      ? <img src={ponds.image} style={{width: 250}} alt="Pond"/> 
+                      : <span>No Image Added</span>}</td>
+                      <td width="10%">
+                        <button onClick={() => deletePonds(ponds)}>Delete</button></td>
+                    </tr>
+                  </tbody>
+                  </table>
+      </div>
           ))
         }
       </div>

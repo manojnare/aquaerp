@@ -14,30 +14,39 @@ import {
 function Layout({ signOut, user }) {
   return (
     <>
-      <h1 className='apph1'>Welcome to Aquaculture Management Software</h1>
+      <h1 className='apph12'>Aquaculture Management Software</h1>
       <Nav>
         <Bars />
 
         <NavMenu>
-          <NavLink to='/' activeStyle>
-            Home
+        <NavBtn>
+            Hi! {user.username}
+          </NavBtn>
+          <NavBtn></NavBtn>
+          <NavBtn></NavBtn>
+          <NavBtn></NavBtn>
+          <NavBtn></NavBtn>
+          <NavLink to='/'>
+            Feed Time
           </NavLink>
-          <NavLink to='/ponds' activeStyle>
+          <NavLink to='/ponds'>
             Ponds
           </NavLink>
-          <NavLink to='/Medicine' activeStyle>
-            Medicine
+          <NavLink to='/expenses'>
+            Expenses
           </NavLink>
-          <NavLink to='/team' activeStyle>
-            Teams
+          <NavLink to='/income'>
+            Income
           </NavLink>
-          <NavLink to='/blogs' activeStyle>
-            Blogs
+          <NavLink to='/test'>
+            Test
           </NavLink>
+
         </NavMenu>
-        <NavBtn>
-        <button className='btn btn-danger' onClick={signOut}>Sign out</button>
+
         
+        <NavBtn>
+          <button className='btn btn-danger' onClick={signOut}>Sign out</button>
         </NavBtn>
       </Nav>
 

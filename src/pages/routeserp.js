@@ -5,9 +5,10 @@ import '../index.css';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
-import Home from "./Home";
+import Expenses from "./Expenses";
 import Ponds from "./Ponds";
-import Medicine from "./Medicine";
+import Income from "./Income";
+import FeedTime from "./FeedTime";
 import NoPage from "./NoPage";
 
 function Routeserp({ signOut, user }) {
@@ -15,9 +16,10 @@ function Routeserp({ signOut, user }) {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<FeedTime />} />
           <Route path="ponds" element={<Ponds />} />
-          <Route path="medicine" element={<Medicine />} />
+          <Route path="expenses" element={<Expenses />} />
+          <Route path="income" element={<Income />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

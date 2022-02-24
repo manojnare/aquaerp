@@ -4,8 +4,47 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 type Ponds @model {
   id: ID!
-  name: String!
+  pond_area: String!
+  pond_no: Int!
+  pond_name: String!
   capacity: String!
   image: String
   description: String
+}
+
+type Expenses @model {
+  id: ID!
+  exp_type: String!
+  exp_date: AWSDate!
+  exp_desc: String!
+  exp_info1: String
+  exp_info2: String
+  exp_info3: String
+  exp_info4: String
+  exp_info5: String
+  expense: Float!
+}
+
+type Income @model {
+  id: ID!
+  inc_type: String!
+  inc_date: AWSDate!
+  inc_desc: String!
+  inc_info1: String
+  inc_info2: String
+  inc_info3: String
+  inc_info4: String
+  inc_info5: String
+  income: Float!
+}
+
+type FeedTime @model {
+  id: ID!
+  pond_no: Int!
+  feed_date: AWSDate!
+  feed_time: AWSTime!
+  feed_type: String
+  feed_quantity: Int
+  feed_info1: String
+  feed_info2: String
 }
