@@ -6,7 +6,6 @@ type Ponds @model {
   id: ID!
   pond_area: String!
   pond_no: Int!
-  pond_name: String!
   capacity: String!
   image: String
   description: String

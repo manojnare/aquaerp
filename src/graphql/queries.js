@@ -7,7 +7,6 @@ export const getPonds = /* GraphQL */ `
       id
       pond_area
       pond_no
-      pond_name
       capacity
       image
       description
@@ -27,7 +26,6 @@ export const listPonds = /* GraphQL */ `
         id
         pond_area
         pond_no
-        pond_name
         capacity
         image
         description

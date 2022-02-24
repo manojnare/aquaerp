@@ -12,7 +12,7 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from '../aws-exports';
 Amplify.configure(awsExports);
 
-const initialFormState = { pond_area: '', pond_no: 0, pond_name: '', capacity: '' }
+const initialFormState = { pond_area: '', pond_no: '', capacity: '' }
 
 function Ponds() {
 
@@ -37,7 +37,7 @@ function Ponds() {
   }
 
   async function createPonds() {
-    if (!formData.pond_area || !formData.pond_no || !formData.pond_name|| !formData.capacity) return;
+    if (!formData.pond_area || !formData.pond_no || !formData.capacity) return;
     await API.graphql({ query: createPondsMutation, variables: { input: formData } });
     if (formData.image) {
       const image = await Storage.get(formData.image);
@@ -70,28 +70,21 @@ function Ponds() {
         <td>
             <input
               onChange={e => setFormData({ ...formData, 'pond_area': e.target.value})}
-              placeholder="Ponds Area"
+              placeholder="Pond Area"
               value={formData.pond_area}
             />
           </td>          
           <td>
             <input
               onChange={e => setFormData({ ...formData, 'pond_no': e.target.value})}
-              placeholder="Ponds No"
-              value={formData.no}
-            />
-          </td>
-          <td>
-            <input
-              onChange={e => setFormData({ ...formData, 'pond_name': e.target.value})}
-              placeholder="Pond Name"
-              value={formData.pond_name}
+              placeholder="Pond No"
+              value={formData.pond_no}
             />
           </td>
           <td>
             <input
               onChange={e => setFormData({ ...formData, 'capacity': e.target.value})}
-              placeholder="Ponds Capacity"
+              placeholder="Pond Capacity"
               value={formData.capacity}
             />
           </td>
@@ -110,12 +103,11 @@ function Ponds() {
       <table className="table table-striped">
                   <thead>
             <tr>
-              <th width="15%">Ponds Area</th>
-              <th width="10%">Ponds No</th>
-              <th width="15%">Ponds Name</th>
-              <th width="10%">Ponds Capacity</th>
-              <th width="40%">Ponds Image</th>
-              <th width="10%">Action</th>
+              <th width="15%">Pond Area</th>
+              <th width="15%">Pond No</th>
+              <th width="15%">Pond Capacity</th>
+              <th width="40%">Pond Image</th>
+              <th width="15%">Action</th>
             </tr>
           </thead>
       </table>
@@ -123,18 +115,17 @@ function Ponds() {
       <div style={{marginBottom: 30}}>
               {
                 ponds.map(ponds => (
-                  <div key={ponds.id}>
+                  <div key={ponds.id || ponds.pond_area}>
                   <table className="table table-striped">
                   <tbody>
                     <tr>
                       <td width="15%">{ponds.pond_area}</td>
-                      <td width="10%">{ponds.pond_no}</td>
-                      <td width="15%">{ponds.pond_name}</td>
-                      <td width="10%">{ponds.capacity}</td>
+                      <td width="15%">{ponds.pond_no}</td>
+                      <td width="15%">{ponds.capacity}</td>
                       <td width="40%">{ponds.image 
                       ? <img src={ponds.image} style={{width: 250}} alt="Pond"/> 
                       : <span>No Image Added</span>}</td>
-                      <td width="10%">
+                      <td width="15%">
                         <button onClick={() => deletePonds(ponds)}>Delete</button></td>
                     </tr>
                   </tbody>

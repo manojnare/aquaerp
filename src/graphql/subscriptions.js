@@ -7,7 +7,6 @@ export const onCreatePonds = /* GraphQL */ `
       id
       pond_area
       pond_no
-      pond_name
       capacity
       image
       description
@@ -22,7 +21,6 @@ export const onUpdatePonds = /* GraphQL */ `
       id
       pond_area
       pond_no
-      pond_name
       capacity
       image
       description
@@ -37,7 +35,6 @@ export const onDeletePonds = /* GraphQL */ `
       id
       pond_area
       pond_no
-      pond_name
       capacity
       image
       description
