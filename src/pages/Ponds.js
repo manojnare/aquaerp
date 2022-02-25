@@ -94,7 +94,7 @@ function Ponds() {
               onChange={onChange}
             />
           </td>
-          <td><button onClick={createPonds}>Create Pond</button></td>      
+          <td><button onClick={createPonds}>Add Pond</button></td>      
         </tr>
 
       </tbody>
