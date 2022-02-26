@@ -72,6 +72,7 @@ function Ponds() {
               onChange={e => setFormData({ ...formData, 'pond_area': e.target.value})}
               placeholder="Pond Area"
               value={formData.pond_area}
+              style = {{textAlign:'center'}}
             />
           </td>          
           <td>
@@ -79,6 +80,7 @@ function Ponds() {
               onChange={e => setFormData({ ...formData, 'pond_no': e.target.value})}
               placeholder="Pond No"
               value={formData.pond_no}
+              style = {{textAlign:'center'}}   
             />
           </td>
           <td>
@@ -86,6 +88,7 @@ function Ponds() {
               onChange={e => setFormData({ ...formData, 'capacity': e.target.value})}
               placeholder="Pond Capacity"
               value={formData.capacity}
+              style = {{textAlign:'center'}} 
             />
           </td>
           <td>      

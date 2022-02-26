@@ -76,6 +76,7 @@ function FeedTime() {
               onChange={e => setFormData({ ...formData, 'pond_no': e.target.value})}
               placeholder="Pond No"
               value={formData.pond_no}
+              style = {{textAlign:'center'}} 
             />
           </td>          
           <td>
@@ -84,6 +85,9 @@ function FeedTime() {
               selected={ftdate}
               onChange={(date) => {set_Date(date)}}
               value={ftdate}
+              className="text-center"
+              dropdownMode="select"
+              popperPlacement="top-start"
             />
           </td>
           <td>
@@ -100,6 +104,7 @@ function FeedTime() {
               onChange={e => setFormData({ ...formData, 'feed_type': e.target.value})}
               placeholder="Feed Type"
               value={formData.feed_type}
+              style = {{textAlign:'center'}}
             />
           </td>
           <td>
@@ -107,6 +112,7 @@ function FeedTime() {
               onChange={e => setFormData({ ...formData, 'feed_quantity': e.target.value})}
               placeholder="Feed Quantity"
               value={formData.feed_quantity}
+              style = {{textAlign:'center'}} 
             />
           </td>
           <td><button onClick={createFeedTime}>Add Feed Time</button></td>      

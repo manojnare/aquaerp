@@ -1,14 +1,13 @@
 import React from 'react';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import '../App.css';
 import {
   Nav,
   NavLink,
   Bars,
   NavMenu,
-  NavBtn,
-  NavBtnLink,
+  NavBtn
 } from './NavBar';
 
 function Layout({ signOut, user }) {
@@ -26,11 +25,11 @@ function Layout({ signOut, user }) {
           <NavBtn></NavBtn>
           <NavBtn></NavBtn>
           <NavBtn></NavBtn>
-          <NavLink to='/'>
-            Feed Time
-          </NavLink>
           <NavLink to='/ponds'>
             Ponds
+          </NavLink>
+          <NavLink to='/'>
+            Feed Time
           </NavLink>
           <NavLink to='/expenses'>
             Expenses

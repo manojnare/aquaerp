@@ -87,6 +87,9 @@ function Income() {
               selected={incdate}
               onChange={(date) => {set_Date(date)}}
               value={incdate}
+              className="text-center"
+              dropdownMode="select"
+              popperPlacement="top-start"
             />
           </td>
           <td>
@@ -94,6 +97,8 @@ function Income() {
               onChange={e => setFormData({ ...formData, 'inc_desc': e.target.value})}
               placeholder="Income Description"
               value={formData.inc_desc}
+              style = {{textAlign:'center'}}
+              required="required"
             />
           </td>
           <td>
@@ -101,6 +106,7 @@ function Income() {
               onChange={e => setFormData({ ...formData, 'income': e.target.value})}
               placeholder="Income"
               value={formData.income}
+              style = {{textAlign:'center'}}
             />
           </td>
           <td><button onClick={createIncome}>Add Income</button></td>      

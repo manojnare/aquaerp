@@ -93,6 +93,9 @@ async function fExpType(exp) {
               selected={expdate}
               onChange={(date) => {set_Date(date)}}
               value={expdate}
+              className="text-center"
+              dropdownMode="select"
+              popperPlacement="top-start"
             />
           </td>
           <td>
@@ -100,6 +103,7 @@ async function fExpType(exp) {
               onChange={e => setFormData({ ...formData, 'exp_desc': e.target.value})}
               placeholder="Expense Description"
               value={formData.exp_desc}
+              style = {{textAlign:'center'}}
             />
           </td>
           <td>
@@ -107,6 +111,7 @@ async function fExpType(exp) {
               onChange={e => setFormData({ ...formData, 'expense': e.target.value})}
               placeholder="Expense"
               value={formData.expense}
+              style = {{textAlign:'center'}}
             />
           </td>
           <td><button onClick={createExpenses}>Add Expense</button></td>      
