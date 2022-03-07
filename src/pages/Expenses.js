@@ -70,7 +70,7 @@ async function fExpType(exp) {
 
   return (
     <div className="App">
-      <h1>Expenses Details</h1>
+      <h1>Expense(s) Details</h1>
       <table className="table table-striped">
       <tbody>
         <tr>
